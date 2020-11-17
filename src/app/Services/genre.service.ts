@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../Models/User';
+import { Genre } from '../Models/Genre';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class GenreService {
   apiURL: String = 'https://keycodebookfo.herokuapp.com';
+
   constructor(
     private http: HttpClient
   ) { }
 
-  createUser(formData){
-    return this.http.post<User>(`${this.apiURL}/user/create`, formData)
+  createGenre(formData){
+    return this.http.post<Genre>(`${this.apiURL}/genre/create`, formData)
   }
 
-  login(formData){
-    return this.http.post<User>(`${this.apiURL}/login`, formData)
+  getAll(){
+    return this.http.get(`${this.apiURL}/genre/getAll`)
   }
 }
-
